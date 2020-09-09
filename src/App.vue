@@ -1,32 +1,42 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="root">
+    <PublicHeader></PublicHeader>
+    <div class="page">
+      <router-view></router-view>
     </div>
-    <router-view/>
+    <PublicBottom></PublicBottom>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import Vue from "vue";
+
+import header from "./components/header";
+import bottom from "./components/bottom";
+
+import mine from "./views/mine";
+
+export default {
+  components: {
+    [header.name]: header,
+    [bottom.name]: bottom,
+  },
+};
+</script>
+
+<style scoped>
+.root {
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.page {
+  position: absolute;
+  background-color: lightblue;
+  top: 1.46rem;
+  bottom: 1.33rem;
+  left: 0;
+  right: 0;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="mine-wrap">
+    <!-- 用户 -->
     <div class="user">
       <div class="user-header"></div>
 
@@ -13,11 +14,19 @@
 
       <span class="iconfont icon-jiantouyou"></span>
     </div>
+
+    <applicationsPane></applicationsPane>
   </div>
 </template>
 
 <script>
-export default {};
+import components from "../components/index";
+
+export default {
+  components: {
+    [components.applicationsPane.name]: components.applicationsPane,
+  },
+};
 </script>
 
 <style scoped>

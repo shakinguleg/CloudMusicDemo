@@ -10,16 +10,15 @@
 
 <script>
 import Vue from "vue";
-
-import header from "./components/header";
-import bottom from "./components/bottom";
+import components from "./components/index";
 
 import mine from "./views/mine";
 
 export default {
   components: {
-    [header.name]: header,
-    [bottom.name]: bottom,
+    [components.header.name]: components.header,
+    [components.bottom.name]: components.bottom,
+   
   },
 };
 </script>

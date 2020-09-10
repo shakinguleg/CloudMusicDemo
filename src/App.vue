@@ -18,13 +18,13 @@ export default {
   components: {
     [components.header.name]: components.header,
     [components.bottom.name]: components.bottom,
-   
   },
 };
 </script>
 
 <style scoped>
 .root {
+  touch-action: none;
   height: 100%;
   width: 100%;
   position: relative;

@@ -1,15 +1,13 @@
 <template>
   <div class="applicationsPane">
-    <div v-for="item in group" :key="item" class="row">
-      <applicationButton v-for="i in row(item-1)" :key="i.title">
-        <template #logo>
-          <div :class="`iconfont ${i.icon} button` "></div>
-        </template>
-        <template #text>
-          <div class="text">{{i.title}}</div>
-        </template>
-      </applicationButton>
-    </div>
+    <applicationButton v-for="i in applications" :key="i.title">
+      <template #logo>
+        <div :class="`iconfont ${i.icon} button` "></div>
+      </template>
+      <template #text>
+        <div class="text">{{i.title}}</div>
+      </template>
+    </applicationButton>
   </div>
 </template>
 
@@ -21,20 +19,8 @@ export default {
     [applicationButton.name]: applicationButton,
   },
   name: "applicationsPane",
-  computed: {
-    // 四个一组
-    group() {
-      return Math.ceil(this.applications.length / 4);
-    },
-  },
-  methods: {
-    // 取出四个值
-    row(num) {
-      console.log("num: ", num);
-      var arr = this.applications.slice(num * 4, num * 4 + 4);
-      return arr;
-    },
-  },
+  computed: {},
+  methods: {},
   data() {
     return {
       applications: [
@@ -55,22 +41,23 @@ export default {
           title: "最近播放",
         },
         {
-          icon: "icon-xiangxiajiantou",
+          icon: "icon-ttpodicon",
           title: "我的关注",
         },
         {
-          icon: "icon-xiangshangjiantou",
+          icon: "icon-shoucang",
           title: "收藏和赞",
         },
         {
-          icon: "icon-anonymous-iconfont",
+          icon: "icon-wodediantai",
           title: "我的电台",
         },
         {
-          icon: "icon-bofang-copy",
+          icon: "icon-addTodo-nav",
           title: "音乐应用",
         },
       ],
+    
     };
   },
 };
@@ -78,14 +65,14 @@ export default {
 
 <style scoped>
 .applicationsPane {
-  width: 100%;
+  width: 9.9rem;
   box-sizing: border-box;
-  padding: 0.66rem;
+  padding: 0.66rem 0.72rem 0;
   background-color: lightseagreen;
-}
-
-.row {
+  border-radius: 0.24rem;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 </style>

@@ -1,24 +1,24 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import scroll from './components/scroll'
+import pull from './components/pull-down-up.vue'
 
-function resize() {
-  var fontsize = 100 / 1080 * document.documentElement.clientWidth
-  document.documentElement.style.fontSize = fontsize + "px"
+Vue.component("scroll", scroll)
+Vue.component("pull", pull)
 
+const computeFontSize = () => {
+  let windowWidth = window.document.documentElement.clientWidth;
+  if (windowWidth <= 320) {
+    windowWidth = 320;
+  } else if (windowWidth >= 1080) {
+    windowWidth = 1080;
+  }
+  const fontSize = windowWidth * 100 / 1080;
+  window.document.documentElement.style.fontSize = fontSize + 'px';
 }
-
-resize();
-
-window.onload = function () {
-  resize();
-}
-
-function test(){
-
-}
-
-test.bind()
+window.addEventListener('resize', computeFontSize);
+window.addEventListener('load', computeFontSize);
 
 Vue.config.productionTip = false
 

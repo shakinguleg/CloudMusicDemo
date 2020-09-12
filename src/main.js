@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import scroll from './components/scroll'
 import pull from './components/pull-down-up.vue'
+import store from './store';
 
 Vue.component("scroll", scroll)
 Vue.component("pull", pull)
@@ -23,6 +24,7 @@ window.addEventListener('load', computeFontSize);
 Vue.config.productionTip = false
 
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')

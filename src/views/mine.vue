@@ -36,27 +36,45 @@
       </div>
 
       <!-- 用户歌单 -->
-      <collectionPane></collectionPane>
-      <collectionPane></collectionPane>
-      <collectionPane></collectionPane>
+      <collectionPane v-for="item in 1" :key="item">
+        <template>
+          <collection v-for="i in minedata" :key="i.id" :collec="i"></collection>
+        </template>
+      </collectionPane>
     </div>
   </scroll>
 </template>
 
 <script>
 import components from "../components/index";
-
+import { mapState } from "vuex";
 
 export default {
   components: {
     [components.applicationsPane.name]: components.applicationsPane,
     [components.collectionPane.name]: components.collectionPane,
+    [components.collection.name]: components.collection,
   },
   data() {
-    return {};
+    return {
+      minedata: [],
+    };
   },
-  mounted() {},
-  methods: {},
+  computed: {
+    ...mapState({
+      mineData: (state) => state.mine.data,
+    }),
+  },
+  watch: {
+    mineData: {
+      handler() {
+        this.minedata = this.mineData.map(({ picUrl, id }) => ({ picUrl, id }));
+      },
+    },
+  },
+  mounted() {
+    this.minedata = this.mineData.map(({ picUrl, id }) => ({ picUrl, id }));
+  },
 };
 </script>
 
@@ -107,6 +125,7 @@ export default {
 .user-name {
   font-size: 0.42rem;
   font-weight: bold;
+  color: #333;
 }
 .vip-wrap {
   font-size: 0.22rem;
@@ -145,7 +164,7 @@ export default {
   width: 9.9rem;
   box-sizing: border-box;
   padding: 0.44rem;
-  background-color: lightseagreen;
+  background-color: #fff;
   border-radius: 0.24rem;
   display: flex;
   justify-content: flex-start;
@@ -163,11 +182,12 @@ export default {
 
 .love_wrap .list_name {
   font-size: 0.38rem;
-  font-weight: bold;
+  color: #333333;
 }
 .love_wrap .list_info {
   margin-top: 0.18rem;
   font-size: 0.28rem;
+  color: #999;
 }
 .collectionPane {
   margin-top: 0.52rem;

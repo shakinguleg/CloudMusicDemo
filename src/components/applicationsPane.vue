@@ -68,7 +68,7 @@ export default {
   width: 9.9rem;
   box-sizing: border-box;
   padding: 0.66rem 0.72rem 0;
-  background-color: lightseagreen;
+  background-color: #fff;
   border-radius: 0.24rem;
   display: flex;
   justify-content: space-around;

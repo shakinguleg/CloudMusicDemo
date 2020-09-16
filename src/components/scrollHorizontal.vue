@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" ref="scroll_wrap">
+  <div class="horizontal" ref="scroll_wrap_horizontal">
     <div class="scroll">
       <slot></slot>
     </div>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "scroll",
+  name: "scrollH",
   methods: {
     // scrollTopAction() {
     //   // 让滚动视图滚动到指定的位置
@@ -18,18 +18,15 @@ export default {
     //   this.dataScroll.scrollTo(0, -100, 100);
     // },
   },
-  data() {
-    return {
-    };
-  },
 
   mounted() {
-    const scroll = this.$refs.scroll_wrap;
+    const scroll = this.$refs.scroll_wrap_horizontal;
     const Iscroll = new IScroll(scroll, {
       bounce: false, //反弹效果
       click: true,
       tap: true, //touch
       probeType: 3,
+      scrollX: true,
     });
 
     Iscroll.on("beforeScrollStart", () => {
@@ -42,8 +39,12 @@ export default {
 </script>
 
 <style scoped>
-.wrap {
+.horizontal {
   touch-action: none;
   overflow: hidden;
+}
+
+.horizontal .scroll {
+  width: max-content;
 }
 </style>

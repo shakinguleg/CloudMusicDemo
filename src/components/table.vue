@@ -46,8 +46,18 @@ export default {
         // const id = this.headerItem[index]
       },
     },
+    "$route.name": {
+      handler(newVal) {
+        this.selected = this.headerItem.findIndex((item) => {
+          return item.name === newVal;
+        });
+      },
+      immediate: true,
+      deep: true,
+    },
   },
   mounted() {
+    // 请求推荐歌单数据
     this.$store.dispatch("mine/requireMineData");
   },
 };

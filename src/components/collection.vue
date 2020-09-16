@@ -1,6 +1,6 @@
 <template>
-  <router-link :to="{name:'Songs'}">
-    <div class="collection" @click="getSongs(collec.id)">
+  <router-link :to="{name:'Songs',params:{collectionId:collec.id}}">
+    <div class="collection">
       <img :src="collec.picUrl" alt />
       <div class="info_wrap">
         <p class="col">REOL</p>
@@ -23,9 +23,7 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapActions({
-      getSongs: "songs/getSongs",
-    }),
+    
   },
   mounted() {},
 };

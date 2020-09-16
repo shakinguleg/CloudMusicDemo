@@ -8,6 +8,7 @@ import mine from "../views/mine.vue"
 import cloud from "../views/cloud.vue"
 import vedio from "../views/vedio.vue"
 import collectionDetail from "../views/collectionDetail.vue"
+import song from "../views/song.vue"
 
 Vue.use(VueRouter);
 
@@ -41,10 +42,19 @@ const routes = [
     ]
   },
   {
-    path: '/songs',
+    path: '/songs/:collectionId',
     name: 'Songs',
-    component: collectionDetail
+    component: collectionDetail,
   },
+  {
+    path: '/song/:songId',
+    name: 'Song',
+    component: song
+  },
+  {
+    path: '/',
+    redirect: { name: 'Mine' }
+  }
 ]
 
 const router = new VueRouter({

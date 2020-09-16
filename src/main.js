@@ -2,10 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import scroll from './components/scroll'
+import scrollHorizontal from './components/scrollHorizontal'
 import pull from './components/pull-down-up.vue'
 import store from './store';
 
 Vue.component("scroll", scroll)
+Vue.component("scrollHorizontal", scrollHorizontal)
 Vue.component("pull", pull)
 
 const computeFontSize = () => {

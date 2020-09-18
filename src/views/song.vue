@@ -2,10 +2,14 @@
   <div class="song_wrap">
     <!-- :style="{'pointer-events':isShow==true?'auto':'none'}" -->
     <transition name="pullUp" @enter="handleEnter" @leave="handleLeave">
-      <div class="song" v-show="isShow">
+      <!-- 播放歌曲界面 -->
+      <div class="song" v-if="isShow">
+        <!-- 背景图蒙板 -->
         <div class="mask" :style="{'background-image':`url(${picUrl})`}">
           <div class="mask_photo"></div>
         </div>
+
+        <!-- 导航栏头部 -->
         <div class="song_header">
           <span class="iconfont icon-xiangxiajiantou" @click="back"></span>
           <div class="song_title">
@@ -15,12 +19,13 @@
           <span class="iconfont icon-fenxiang"></span>
         </div>
 
+        <!-- 中间旋转图片部分 -->
         <div class="pic_wrap">
           <transition name="pullUp">
             <img
               class="pic"
               ref="pic"
-              :style="{'background-image':`url(${picUrl})`, 'animation-play-state':'running'}"
+              :style="{'background-image':`url(${picUrl})`, 'animation-play-state':'paused'}"
               src="../assets/love_music.jpg"
             />
           </transition>
@@ -38,21 +43,23 @@
             <span class="iconfont icon-gengduo1"></span>
           </div>
 
-          <!-- 播放条 -->
+          <!-- 歌曲控制条 -->
           <div class="play_wrap">
             <span class="nowTime">{{currentTime}}</span>
-            <audio
+            <!-- 自定义的进度条 -->
+            <myProgress :setProgress="setProgress" :getProgress="progress"></myProgress>
+            <!-- <audio
               @timeupdate="setCurrentTime"
               @canplay="initPlay"
               controls
               :src="songUrl"
               class="play"
               ref="play"
-            ></audio>
+            ></audio>-->
             <span class="allTime">{{duration}}</span>
           </div>
 
-          <!-- 歌曲页面控制栏 -->
+          <!-- 播放歌曲控制栏 -->
           <div class="control_wrap">
             <span class="iconfont icon-liebiaoshunxubofang"></span>
             <span class="iconfont icon-shangyishou" @click="prev"></span>
@@ -64,7 +71,7 @@
       </div>
     </transition>
 
-    <!-- 底部播放栏 -->
+    <!-- 全局底部播放栏 -->
     <div class="bottom-wrap">
       <img
         :style="{'background-image':`url(${picUrl})`}"
@@ -89,16 +96,14 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import animations from "create-keyframe-animation";
+import myProgress from "../components/progress";
 
 // canvas的width和height不能在vue中动态获取
 window.onresize = function () {
   initCanvas();
 };
 
-/*
- * 设置canvas的width和height, 并绘制背景圆环
- *
- */
+// 设置canvas的width和height, 并绘制背景圆环
 function initCanvas() {
   let cvs = document.documentElement.querySelector(".cvs");
   cvs.height = cvs.width = document.documentElement.clientWidth * 0.06481;
@@ -112,6 +117,9 @@ function initCanvas() {
 }
 
 export default {
+  components: {
+    myProgress,
+  },
   mixins: {
     initCanvas,
   },
@@ -127,15 +135,20 @@ export default {
       play: false,
       trackIds: [],
       isShow: false,
-      progress: 0,
+      progress: 0.2,
     };
   },
   mounted() {
+    console.log(111);
     initCanvas();
     this.paint(this.progress);
   },
   methods: {
-    // 进度条
+    // 控制条百分比的回传
+    setProgress(val) {
+      this.progress = val;
+    },
+    // 绘制圆形进度条
     paint(progress) {
       this.cvs = this.$refs.cvs;
       const ctx = this.cvs.getContext("2d");
@@ -163,7 +176,7 @@ export default {
         x,
         x - 3,
         (Math.PI / 180) * -90,
-        (Math.PI / 180) * (-90 + progress)
+        (Math.PI / 180) * (-90 + progress * 360)
       );
       ctx.lineTo(x, x);
       ctx.moveTo(x, x);
@@ -172,7 +185,7 @@ export default {
         x,
         x - 1,
         (Math.PI / 180) * -90,
-        (Math.PI / 180) * (-90 + progress)
+        (Math.PI / 180) * (-90 + progress * 360)
       );
       ctx.lineTo(x, x);
       ctx.fillStyle = "#ff3a3a";
@@ -490,6 +503,13 @@ export default {
   font-size: 0.2rem;
   color: #dededc;
   text-align: center;
+}
+
+/* 进度条样式 */
+.play_wrap .progress {
+  height: 0.04rem;
+  width: 7.9rem;
+  border-radius: 0.02rem;
 }
 
 .play {

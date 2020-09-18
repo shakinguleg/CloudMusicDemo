@@ -96,7 +96,6 @@ export default {
     [components.applicationButton.name]: components.applicationButton,
   },
   mounted() {
-    // this.$nextTick(() => this.initSwiper);
     this.initSwiper();
   },
   created() {
@@ -115,8 +114,6 @@ export default {
         loop: true, // 循环模式选项
         direction: "horizontal", // 垂直切换选项
         autoplay: { disableOnInteraction: false }, //可选选项，自动滑动
-        observer: true,
-        observeParents: true,
         // 如果需要分页器
         pagination: {
           el: this.$refs.swiper_pagination,
@@ -133,7 +130,11 @@ export default {
       }
     },
   },
-  watch: {},
+  watch: {
+    banners() {
+      this.$nextTick(() => this.swiper.update());
+    },
+  },
 };
 </script>
 

@@ -1,10 +1,9 @@
 <template>
-  <div class="root">
+  <div class="root" @click="handle">
     <Table></Table>
     <div class="page">
       <router-view></router-view>
     </div>
-    <PublicBottom></PublicBottom>
   </div>
 </template>
 
@@ -17,7 +16,9 @@ import components from "../components/index";
 export default {
   components: {
     [components.table.name]: components.table,
-    [components.bottom.name]: components.bottom,
+  },
+  methods: {
+    handle() {},
   },
 };
 </script>

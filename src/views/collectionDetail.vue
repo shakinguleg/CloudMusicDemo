@@ -1,47 +1,44 @@
 <template>
-  <scroll class="scroll">
-    <div class="collectionDetail">
-      <div class="mask_wrap">
-        <div
-          class="mask"
-          :style="{'background-image':`url(${getbackgroundCoverUrl})`,'background-size':'600%', 'background-position':'top'}"
-        >
-          <div class="photo"></div>
+  <div class="collectionDetail">
+    <div
+      class="mask"
+      :style="{'background-image':`url(${getbackgroundCoverUrl})`,'background-size':'600%', 'background-position':'top 1.3rem'}"
+    >
+      <div class="photo"></div>
+    </div>
+    <PublicHeader></PublicHeader>
+    <scroll class="scroll">
+      <div class="content_wrap">
+        <!-- 歌单相关 -->
+        <div class="song-about">
+          <div :style="{'background-image':`url(${coverImgUrl})`}" class="song-img"></div>
+          <div class="right">
+            <span class="name">{{name}}</span>
+            <div class="wrap">
+              <div class="user-img" :style="{'background-image':`url(${avatarUrl})`}"></div>
+              <span class="nickname">{{nickname}}&nbsp;&gt;</span>
+            </div>
+            <span class="text">编辑信息&nbsp;&gt;</span>
+          </div>
         </div>
 
-        <div class="content_wrap">
-          <PublicHeader></PublicHeader>
-          <!-- 歌单相关 -->
-          <div class="song-about">
-            <div :style="{'background-image':`url(${coverImgUrl})`}" class="song-img"></div>
-            <div class="right">
-              <span class="name">{{name}}</span>
-              <div class="wrap">
-                <div class="user-img" :style="{'background-image':`url(${avatarUrl})`}"></div>
-                <span class="nickname">{{nickname}}&nbsp;&gt;</span>
-              </div>
-              <span class="text">编辑信息&nbsp;&gt;</span>
-            </div>
+        <!-- 操作 -->
+        <div class="option">
+          <div class="wrap">
+            <span class="iconfont icon-pinglun"></span>
+            <span class="text">评论</span>
           </div>
-
-          <!-- 操作 -->
-          <div class="option">
-            <div class="wrap">
-              <span class="iconfont icon-pinglun"></span>
-              <span class="text">评论</span>
-            </div>
-            <div class="wrap">
-              <span class="iconfont icon-fenxiang"></span>
-              <span class="text">分享</span>
-            </div>
-            <div class="wrap">
-              <span class="iconfont icon-xiazai"></span>
-              <span class="text">下载</span>
-            </div>
-            <div class="wrap">
-              <span class="iconfont icon-huaban"></span>
-              <span class="text">多选</span>
-            </div>
+          <div class="wrap">
+            <span class="iconfont icon-fenxiang"></span>
+            <span class="text">分享</span>
+          </div>
+          <div class="wrap">
+            <span class="iconfont icon-xiazai"></span>
+            <span class="text">下载</span>
+          </div>
+          <div class="wrap">
+            <span class="iconfont icon-huaban"></span>
+            <span class="text">多选</span>
           </div>
         </div>
       </div>
@@ -55,8 +52,8 @@
           ></songItem>
         </template>
       </songList>
-    </div>
-  </scroll>
+    </scroll>
+  </div>
 </template>
  
 <script>
@@ -176,7 +173,9 @@ export default {
 <style scoped>
 .scroll {
   width: 100%;
-  height: 100%;
+  top: 1.3rem;
+  bottom: 1.33rem;
+  position: absolute;
 }
 
 .collectionDetail {
@@ -186,13 +185,10 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.mask_wrap {
-  width: 100%;
-  position: relative;
-}
 
 .mask {
-  height: 100%;
+  top: 0;
+  height: 10rem;
   width: 100%;
   z-index: -1;
   position: absolute;
@@ -206,15 +202,16 @@ export default {
   height: 100%;
   position: absolute;
   background: rgba(0, 0, 0, 0.3);
+  filter: none;
 }
 
 .content_wrap {
   width: 100%;
   position: relative;
-  z-index: 11;
   display: flex;
   flex-direction: column;
   align-items: center;
+  filter: none;
 }
 
 .header {

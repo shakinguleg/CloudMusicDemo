@@ -1,17 +1,19 @@
 <template>
-  <div class="header">
-    <!-- 后退按钮 -->
-    <span class="iconfont icon-xiangxiajiantou brrow" @click="$router.back()"></span>
+  <div class="header_wrap">
+    <div class="header">
+      <!-- 后退按钮 -->
+      <span class="iconfont icon-xiangxiajiantou brrow" @click="$router.back()"></span>
 
-    <p class="name">
-      歌单
-      <span class="reg">&reg;</span>
-    </p>
+      <p class="name">
+        歌单
+        <span class="reg">&reg;</span>
+      </p>
 
-    <!-- 搜索按钮 -->
-    <span class="search iconfont icon-sousuo"></span>
-    <!-- 更多 -->
-    <span class="iconfont icon-gengduo"></span>
+      <!-- 搜索按钮 -->
+      <span class="search iconfont icon-sousuo"></span>
+      <!-- 更多 -->
+      <span class="iconfont icon-gengduo"></span>
+    </div>
   </div>
 </template>
 
@@ -22,6 +24,15 @@ export default {
 </script>
 
 <style scoped>
+.header_wrap {
+  position: relative;
+  width: 100%;
+  height: 1.3rem;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
 .header {
   width: 90.2%;
   height: 1.3rem;
@@ -31,7 +42,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  color: white;
 }
+
 .brrow {
   transform: rotate(90deg);
 }

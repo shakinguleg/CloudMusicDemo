@@ -41,6 +41,7 @@ export default {
 
 .collection img {
   width: 1.38rem;
+  height: 1.38rem;
   border-radius: 0.1rem;
 }
 

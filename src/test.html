@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cvs {
+            background-color: yellow;
+            display: block;
+            margin: 0 auto;
+            /* border-radius: 50%; */
+
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="cvs" width="300" height="300"></canvas>
+
+    <script>
+        var cvs = document.querySelector(".cvs")
+        var ctx = cvs.getContext('2d')
+        ctx.beginPath();
+
+        // ctx.moveTo(150, 150)
+        ctx.arc(150, 150, 50, 0, Math.PI * 2)
+        // ctx.lineTo(150, 150)
+
+        // ctx.globalCompositeOperation = "source-out"
+
+        // ctx.moveTo(150, 150)
+        ctx.arc(150, 150, 52, 0, Math.PI * 2)
+        // ctx.lineTo(150, 150)
+        ctx.fillStyle = 'black'
+        ctx.fill('evenodd')
+        ctx.closePath();
+
+
+
+        ctx.beginPath();
+
+        ctx.moveTo(150, 150)
+        ctx.arc(150, 150, 50, -Math.PI / 2, Math.PI * 1)
+        ctx.lineTo(150, 150)
+
+        // ctx.globalCompositeOperation = "source-out"
+
+        ctx.moveTo(150, 150)
+        ctx.arc(150, 150, 52, -Math.PI / 2, Math.PI * 1)
+        ctx.lineTo(150, 150)
+        ctx.fillStyle = 'red'
+        ctx.fill('evenodd')
+        ctx.closePath();
+
+
+
+        // 画笑脸
+        // var canvas = document.querySelector(".cvs")
+        // if (canvas.getContext) {
+        //     var ctx = canvas.getContext('2d');
+
+        //     ctx.beginPath();
+        //     ctx.arc(75, 75, 50, 0, Math.PI * 2); // 绘制
+        //     ctx.moveTo(110, 75);
+        //     ctx.arc(75, 75, 35, 0, Math.PI, false);   // 口(顺时针)
+        //     ctx.moveTo(65, 65);
+        //     ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // 左眼
+        //     ctx.moveTo(95, 65);
+        //     ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // 右眼
+        //     ctx.stroke();
+
+        // }
+    </script>
+
+</body>
+
+</html>

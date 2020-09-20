@@ -1,4 +1,5 @@
-export const HOST = "http://localhost:8080/api"
+export const HOST = "http://192.168.1.104:3000"
+// export const HOST = "http://localhost:8080/api"
 
 
 /* 获取推荐歌单 */
@@ -17,6 +18,11 @@ export const SONG_INFO_URL = "/song/detail"
 /*http://localhost:3000/song/url?id=1401414335 */
 export const SONG_URL = "song/url"
 
+// 获取歌词
+//lyric?id=33894312
+export const SONG_LYRIC = "/lyric"
+
 
 /* 发现 - 轮播图 */
 export const BANNER_URL = 'banner'
+

@@ -13,7 +13,6 @@ export default {
             const { data: { code, result } } = data
             if (code == 200) {
                 context.commit('setData', result)
-
             }
         }
     },

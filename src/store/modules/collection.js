@@ -13,8 +13,6 @@ export default {
             // 获取歌单中所有歌曲的trackIds, 利用该对象中的id去获取歌曲信息
             const { data: { playlist } } = await http.get(SONGS_URL, { id: payload })
             context.commit("setSongsId", playlist)
-            
-
         }
     },
     mutations: {

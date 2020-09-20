@@ -62,8 +62,8 @@ export default {
 .reg {
   font-size: 0.28rem;
   position: absolute;
-  top: -0.28rem;
-  right: -0.28rem;
+  top: -0.06rem;
+  right: -0.3rem;
 }
 .search {
   right: 1.1rem;

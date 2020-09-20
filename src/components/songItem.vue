@@ -1,23 +1,21 @@
 <template>
-  <router-link :to="{name:'Song',params:{songId:songId},query:{trackIds:songIdAndIndex.trackIds}}">
-    <div class="songItem">
-      <div class="num">{{songIdAndIndex.index}}</div>
-      <div class="content">
-        <div class="title">
-          {{title}}
-          <span class="alia" v-if="isShow">&nbsp;&nbsp;({{alias}})</span>
-        </div>
-        <div class="singer">
-          <span class="iconfont icon-sq"></span>
-          <span>{{singer}}</span>
-        </div>
+  <div class="songItem" @click="setSong">
+    <div class="num">{{songIdAndIndex.index}}</div>
+    <div class="content">
+      <div class="title">
+        {{title}}
+        <span class="alia" v-if="isShow">&nbsp;&nbsp;({{alias}})</span>
       </div>
-      <div class="wrap">
-        <span class="iconfont icon-bofang"></span>
-        <span class="iconfont icon-gengduo"></span>
+      <div class="singer">
+        <span class="iconfont icon-sq"></span>
+        <span>{{singer}}</span>
       </div>
     </div>
-  </router-link>
+    <div class="wrap">
+      <span class="iconfont icon-bofang"></span>
+      <span class="iconfont icon-gengduo"></span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -52,6 +50,11 @@ export default {
     this.getData();
   },
   methods: {
+    setSong() {
+      this.$store.commit("playSongAbout/setSongAbout", this.songIdAndIndex);
+      this.$store.commit("playSongAbout/setShow", true);
+      this.$store.commit("playSongAbout/setPlay", true);//控制歌曲能够播放
+    },
     ...mapActions({
       getSongInfo: "songInfo/getSongInfo",
     }),

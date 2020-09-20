@@ -9,11 +9,12 @@ export default {
         },
         setSongUrl(state, payload) {
             state.songUrl = payload
-        }
+        },
+
     },
     state: {
         songInfo: {},
-        songUrl: ''
+        songUrl: '',
     },
     actions: {
         // http://localhost:3000/song/detail?ids=1401414335
@@ -29,7 +30,6 @@ export default {
             var { data: { data: [{ url }] } } = await http.get(SONG_URL, { id: payload })
             context.commit('setSongUrl', url)
             return context.state.songUrl
-
         }
 
     },

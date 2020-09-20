@@ -47,11 +47,6 @@ const routes = [
     component: collectionDetail,
   },
   {
-    path: '/song/:songId',
-    name: 'Song',
-    component: song
-  },
-  {
     path: '/',
     redirect: { name: 'Mine' }
   }

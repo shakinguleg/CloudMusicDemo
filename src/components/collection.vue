@@ -3,9 +3,9 @@
     <div class="collection">
       <img :src="collec.picUrl" alt />
       <div class="info_wrap">
-        <p class="col">REOL</p>
+        <p class="col">{{collec.name}}</p>
         <div class="num">
-          <span>14</span>首
+          <span>{{collec.trackCount}}</span>首
         </div>
       </div>
 
@@ -22,9 +22,7 @@ export default {
     collec: Object,
   },
   computed: {},
-  methods: {
-    
-  },
+  methods: {},
   mounted() {},
 };
 </script>

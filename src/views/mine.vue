@@ -21,7 +21,7 @@
 
       <!-- 喜欢歌单 -->
       <div class="love_music">
-        <img src="/img/love_music.jpg" alt />
+        <img src="../assets/love_music.jpg" alt />
 
         <div class="love_wrap">
           <div class="list_name">我喜欢的音乐</div>
@@ -68,7 +68,14 @@ export default {
   watch: {
     mineData: {
       handler() {
-        this.minedata = this.mineData.map(({ picUrl, id }) => ({ picUrl, id }));
+        this.minedata = this.mineData.map(
+          ({ picUrl, id, name, trackCount }) => ({
+            picUrl,
+            id,
+            name,
+            trackCount,
+          })
+        );
       },
     },
   },

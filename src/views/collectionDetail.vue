@@ -4,9 +4,11 @@
       class="mask"
       :style="{'background-image':`url(${getbackgroundCoverUrl})`,'background-size':'600%', 'background-position':'top 1.3rem'}"
     >
-      <div class="photo"></div>
+      <div class="mask_top"></div>
     </div>
+    <div class="mask_background"></div>
     <PublicHeader></PublicHeader>
+
     <scroll class="scroll">
       <div class="content_wrap">
         <!-- 歌单相关 -->
@@ -42,6 +44,7 @@
           </div>
         </div>
       </div>
+
       <!-- 歌曲列表 -->
       <songList :length="trackIds.length">
         <template>
@@ -192,17 +195,25 @@ export default {
   width: 100%;
   z-index: -1;
   position: absolute;
-  filter: blur(10px);
+  filter: blur(100px);
   overflow: hidden;
   padding-bottom: 0.1rem;
 }
-
-.mask .photo {
+.mask_top {
+  position: absolute;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.mask_background {
+  top: 0;
+  height: 10rem;
+  width: 100%;
+  z-index: -2;
   position: absolute;
-  background: rgba(0, 0, 0, 0.3);
-  filter: none;
+  overflow: hidden;
+  padding-bottom: 0.1rem;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .content_wrap {
@@ -211,7 +222,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  filter: none;
 }
 
 .header {
